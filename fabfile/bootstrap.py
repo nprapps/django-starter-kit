@@ -23,10 +23,7 @@ def go(github_username=app_config.GITHUB_USERNAME, repository_name=None):
     """
     Execute the bootstrap tasks for a new project.
     """
-    config = setup_app_config(repository_name=repository_name)
-    setup_repo(config)
 
-def setup_app_config(repository_name):
     logger.info('Setting up app config')
     config_files = ' '.join(['PROJECT_README.md', 'app_config.py', 'crontab'])
     config = {}
@@ -37,9 +34,6 @@ def setup_app_config(repository_name):
     for k, v in config.items():
         local('sed -i "" \'s|%s|%s|g\' %s' % (k, v, config_files))
 
-    return config
-
-def setup_repo(config):
     logger.info('Setting up git repo')
     utils.confirm("Have you created a Github repository named \"%s\"?" % config['$NEW_REPOSITORY_NAME'])
 
