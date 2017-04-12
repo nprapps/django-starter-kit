@@ -42,6 +42,7 @@ mkvirtualenv -p `which python3` $NEW_PROJECT_NAME
 pip install -r requirements.txt
 
 fab bootstrap
+fab django.setup_django
 ```
 
 This will setup the new repo and will replace `README.md` (this file) with `PROJECT_README.md`. See that file for usage documentation.

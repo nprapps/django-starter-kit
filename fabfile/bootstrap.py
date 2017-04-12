@@ -24,8 +24,7 @@ def go(github_username=app_config.GITHUB_USERNAME, repository_name=None):
     Execute the bootstrap tasks for a new project.
     """
     config = setup_app_config(repository_name=repository_name)
-    setup_django()
-    setup_repo()
+    setup_repo(config)
 
 def setup_app_config(repository_name):
     logger.info('Setting up app config')
@@ -40,14 +39,7 @@ def setup_app_config(repository_name):
 
     return config
 
-def setup_django():
-    logger.info('Setting up Django')
-
-    # get the new app config
-    reload(app_config)
-    execute('django.setup_django')
-
-def setup_repo():
+def setup_repo(config):
     logger.info('Setting up git repo')
     utils.confirm("Have you created a Github repository named \"%s\"?" % config['$NEW_REPOSITORY_NAME'])
 
