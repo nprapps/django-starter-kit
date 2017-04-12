@@ -12,6 +12,7 @@ import os
 
 from . import utils
 from fabric.api import execute, local, task
+from importlib import reload
 
 logging.basicConfig(format=app_config.LOG_FORMAT)
 logger = logging.getLogger(__name__)
