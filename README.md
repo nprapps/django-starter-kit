@@ -42,14 +42,20 @@ mkvirtualenv -p `which python3` $NEW_PROJECT_NAME
 pip install -r requirements.txt
 
 fab bootstrap
-fab django.setup_django
 ```
-
 This will setup the new repo and will replace `README.md` (this file) with `PROJECT_README.md`. See that file for usage documentation.
 
 By default `bootstrap` will use `nprapps` as the Github username, and the current directory name as the repository name. **This is a best practice**, but you can override these defaults if you need to:
 
 ```
 fab bootstrap:$GITHUB_USERNAME,$REPOSITORY_NAME
+```
+
+The end of the `fab bootstrap` printout will give you a secret key. You must put this in your environment before you try to setup the Django app. (If you're at NPR, store this in our shared env file.)
+
+Then, setup the Django app.
+
+```
+fab django.setup_django
 ```
 
