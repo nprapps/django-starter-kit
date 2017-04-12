@@ -24,6 +24,7 @@ The following things are assumed to be true in this documentation.
 * You are running OSX.
 * You are using Python 3. (Probably the version that came with OSX.)
 * You have [virtualenv](https://pypi.python.org/pypi/virtualenv) and [virtualenvwrapper](https://pypi.python.org/pypi/virtualenvwrapper) installed and working.
+* You have PostgreSQL installed and working.
 * You have NPR's AWS credentials stored as environment variables locally.
 
 For more details on the technology stack used with the app-template, see our [development environment blog post](http://blog.apps.npr.org/2013/06/06/how-to-setup-a-developers-environment.html).
