@@ -1,6 +1,6 @@
 import app_config
 
-from fabric.api import local, settings, task
+from fabric.api import execute, local, settings, task
 from fabric.state import env
 
 @task
@@ -9,7 +9,7 @@ def collect_static():
     
 @task
 def setup_django():
-    data.create_db()
+    execute('data.create_db')
     local('python manage.py makemigrations')
     local('python manage.py migrate')
     local('python manage.py createsuperuser')
