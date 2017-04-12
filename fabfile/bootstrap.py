@@ -49,4 +49,4 @@ def go(github_username=app_config.GITHUB_USERNAME, repository_name=None):
     chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
     secret_key = get_random_string(50, chars)
     print('Put this in your environment.')
-    print('export {0}_DJANGO_SECRET_KEY={1}'.format(config['$NEW_PROJECT_FILENAME'], secret_key))
+    print('export {0}_DJANGO_SECRET_KEY="{1}"'.format(config['$NEW_PROJECT_FILENAME'], secret_key))
