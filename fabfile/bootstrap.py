@@ -11,6 +11,7 @@ import logging
 import os
 
 from . import utils
+from django.utils.crypto import get_random_string
 from fabric.api import execute, local, task
 
 logging.basicConfig(format=app_config.LOG_FORMAT)
@@ -44,3 +45,8 @@ def go(github_username=app_config.GITHUB_USERNAME, repository_name=None):
     local('git commit -am "Initial import from app-template."')
     local('git remote add origin git@github.com:%s/%s.git' % (github_username, config['$NEW_REPOSITORY_NAME']))
     local('git push -u origin master')
+
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    secret_key = get_random_string(50, chars)
+    print('Put this in your environment.')
+    print('export {0}_DJANGO_SECRET_KEY={1}'.format(config['$NEW_PROJECT_SLUG'], secret_key))
