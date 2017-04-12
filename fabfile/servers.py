@@ -43,6 +43,7 @@ def setup():
     checkout_latest()
     install_requirements()
     setup_logs()
+    generate_secret_key()
 
 def create_directories():
     """
