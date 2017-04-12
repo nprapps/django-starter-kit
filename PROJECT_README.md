@@ -60,6 +60,8 @@ pip install -r requirements.txt
 fab django.setup_django
 ```
 
+You will need the project's secret key. If you're at NPR, hopefully the person who setup this project put it in our shared env!
+
 Hide project secrets
 --------------------
 
@@ -74,7 +76,7 @@ A flask app is used to run the project locally. It will automatically recompile 
 
 ```
 workon $PROJECT_SLUG
-fab app
+python manage.py runserver
 ```
 
 Visit [localhost:8000](http://localhost:8000) in your browser.
