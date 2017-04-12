@@ -55,7 +55,7 @@ Bootstrap the project
 
 ```
 cd $NEW_PROJECT_SLUG
-mkvirtualenv $NEW_PROJECT_SLUG
+mkvirtualenv -p `which python3` $NEW_PROJECT_SLUG
 pip install -r requirements.txt
 fab django.setup_django
 ```
