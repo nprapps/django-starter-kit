@@ -23,9 +23,8 @@ def go(github_username=app_config.GITHUB_USERNAME, repository_name=None):
     Execute the bootstrap tasks for a new project.
     """
 
-
+    logger.info('Setting up app config')
     config_files = ' '.join(['PROJECT_README.md', 'app_config.py', 'crontab'])
-
     config = {}
     config['$NEW_PROJECT_SLUG'] = os.getcwd().split('/')[-1]
     config['$NEW_REPOSITORY_NAME'] = repository_name or config['$NEW_PROJECT_SLUG']
@@ -35,8 +34,10 @@ def go(github_username=app_config.GITHUB_USERNAME, repository_name=None):
         local('sed -i "" \'s|%s|%s|g\' %s' % (k, v, config_files))
 
     logger.info('Setting up Django')
+    app_config.configure_targets(None)
     execute('django.setup_django')
 
+    logger.info('Setting up git repo')
     utils.confirm("Have you created a Github repository named \"%s\"?" % config['$NEW_REPOSITORY_NAME'])
 
     local('rm -rf .git')
