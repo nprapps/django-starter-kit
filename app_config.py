@@ -92,8 +92,8 @@ def get_secrets():
     secrets_dict = {}
 
     for k,v in os.environ.items():
-        if k.startswith(PROJECT_SLUG):
-            k = k[len(PROJECT_SLUG) + 1:]
+        if k.startswith(PROJECT_FILENAME):
+            k = k[len(PROJECT_FILENAME) + 1:]
             secrets_dict[k] = v
 
     return secrets_dict
