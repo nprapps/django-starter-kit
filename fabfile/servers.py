@@ -7,6 +7,7 @@ Commands work with servers. (Hiss, boo.)
 import copy
 import logging
 
+from django.utils.crypto import get_random_string
 from fabric.api import local, put, settings, require, run, sudo, task
 from fabric.state import env
 from jinja2 import Template
@@ -103,6 +104,16 @@ def setup_logs():
 
     sudo('mkdir %(SERVER_LOG_PATH)s' % app_config.__dict__)
     sudo('chown ubuntu:ubuntu %(SERVER_LOG_PATH)s' % app_config.__dict__)
+
+@task
+def generate_secret_key():
+    chars = 'abcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*(-_=+)'
+    secret_key = get_random_string(50, chars)
+
+    export = 'export {0}_DJANGO_SECRET_KEY="{1}"'.format(app_config.PROJECT_FILENAME, secret_key)
+
+    sudo('cat {0} >> /etc/environment'.format(export))
+
 
 @task
 def install_crontab():
