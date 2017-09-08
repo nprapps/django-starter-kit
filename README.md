@@ -35,7 +35,7 @@ Copy the template
 Create a new repository on Github. Everywhere you see ``$NEW_PROJECT_NAME`` in the following script, replace it with the name of the repository you just created.
 
 ```
-git clone git@github.com:nprapps/app-template.git $NEW_PROJECT_NAME
+git clone git@github.com:nprapps/django-starter-kit.git $NEW_PROJECT_NAME
 cd $NEW_PROJECT_NAME
 
 mkvirtualenv -p `which python3` $NEW_PROJECT_NAME
